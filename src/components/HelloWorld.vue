@@ -15,9 +15,9 @@ interface DocLink {
 const docs: DocLink[] = [
   { name: 'TypeScript', url: 'https://www.typescriptlang.org/', logo: '/src/assets/typescript.svg' },
   { name: 'Tailwind CSS', url: 'https://tailwindcss.com/', logo: '/src/assets/tailwind.svg' },
-  { name: 'Vue', url: 'https://vuejs.org/', logo: '/src/assets/vue.svg' },
+  { name: 'Vue 3', url: 'https://vuejs.org/', logo: '/src/assets/vue.svg' },
   { name: 'Reka UI', url: 'https://reka-ui.com/', logo: '/src/assets/reka.svg' },
-  { name: 'Feather Icons', url: 'https://feathericons.com/', logo: '/src/assets/feather.svg' },
+  { name: 'Lucide Icons', url: 'https://lucide.dev/', logo: '/src/assets/lucide.svg' },
   { name: 'Vite', url: 'https://vite.dev/', logo: '/src/assets/vite.svg' },
 ]
 </script>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import * as featherIcons from 'feather-icons'
+import * as lucideVueNext from 'lucide-vue-next'
 import { computed } from 'vue'
 
 interface Props {
@@ -21,23 +21,34 @@ const sizeMap = {
   xl: 'w-12 h-12',
 }
 
-const iconSvg = computed(() => {
-  const icon = featherIcons.icons[props.name as keyof typeof featherIcons.icons]
-  if (!icon) {
-    console.warn(`Icon "${props.name}" not found in Feather Icons`)
-    return ''
-  }
-  return icon.toSvg({
-    class: sizeMap[props.size],
-    'stroke-width': props.strokeWidth.toString(),
-  })
-})
+// Convert kebab-case to PascalCase for Lucide icon names
+const getIconComponent = () => {
+  const pascalName = props.name
+    .split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join('')
 
-const classes = computed(() => {
-  return props.class || ''
+  const icon = lucideVueNext[pascalName as keyof typeof lucideVueNext]
+  if (!icon) {
+    console.warn(`Icon "${props.name}" not found in Lucide Icons`)
+    return null
+  }
+  return icon
+}
+
+const IconComponent = computed(() => getIconComponent())
+
+const iconClasses = computed(() => {
+  return `${sizeMap[props.size]} ${props.class || ''}`
 })
 </script>
 
 <template>
-  <span :class="classes" v-html="iconSvg"></span>
+  <component
+    :is="IconComponent"
+    v-if="IconComponent"
+    :size="size"
+    :stroke-width="strokeWidth"
+    :class="iconClasses"
+  />
 </template>
