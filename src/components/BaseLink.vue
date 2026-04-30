@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import { cn } from '../lib/utils'
 import { getButtonClasses, type ButtonVariant, type ButtonSize } from '../utils/buttonStyles'
 
 interface Props {
@@ -24,7 +25,7 @@ const linkClasses = computed(() => {
     return props.class || ''
   }
   const baseClasses = getButtonClasses(props.variant, props.size)
-  return props.class ? `${baseClasses} ${props.class}` : baseClasses
+  return cn(baseClasses, props.class)
 })
 
 const computedRel = computed(() => {
