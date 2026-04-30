@@ -1,49 +1,19 @@
 <script setup lang="ts">
-import * as featherIcons from 'feather-icons'
 import { ref } from 'vue'
 import viteLogo from '../assets/vite.svg'
 import vueLogo from '../assets/vue.svg'
 import BaseButton from './BaseButton.vue'
 import BaseLink from './BaseLink.vue'
+import SvgIcon from './SvgIcon.vue'
 
 const count = ref(0)
-
-// Get SVG strings from Feather icons
-const zapSvg = featherIcons.icons.zap.toSvg({
-  class: 'w-24 h-24',
-  'stroke-width': '1.5',
-})
-const bookOpenSvg = featherIcons.icons['book-open'].toSvg({
-  class: 'w-6 h-6',
-  'stroke-width': '2',
-})
-const share2Svg = featherIcons.icons['share-2'].toSvg({
-  class: 'w-6 h-6',
-  'stroke-width': '2',
-})
-const githubSvg = featherIcons.icons.github.toSvg({
-  class: 'w-5 h-5',
-  'stroke-width': '2',
-})
-const messageCircleSvg = featherIcons.icons['message-circle'].toSvg({
-  class: 'w-5 h-5',
-  'stroke-width': '2',
-})
-const twitterSvg = featherIcons.icons.twitter.toSvg({
-  class: 'w-5 h-5',
-  'stroke-width': '2',
-})
-const shareSvg = featherIcons.icons.share.toSvg({
-  class: 'w-5 h-5',
-  'stroke-width': '2',
-})
 </script>
 
 <template>
   <div class="min-h-screen flex flex-col bg-gradient-to-br from-slate-900 to-slate-950">
     <!-- Hero Section -->
     <section class="flex-1 flex flex-col items-center justify-center px-4 py-20">
-      <div class="mb-8 text-pink-500" v-html="zapSvg"></div>
+      <SvgIcon name="zap" size="xl" :stroke-width="1.5" class="text-pink-500 mb-8"></SvgIcon>
 
       <div class="text-center mb-8">
         <h1 class="text-5xl font-bold text-slate-100 mb-4">Get started</h1>
@@ -64,8 +34,10 @@ const shareSvg = featherIcons.icons.share.toSvg({
     <section class="grid grid-cols-1 md:grid-cols-2 border-t border-slate-700">
       <!-- Documentation -->
       <div class="p-8 border-b md:border-b-0 md:border-r border-slate-700">
-        <div class="w-6 h-6 mb-4 text-purple-400 inline-block" v-html="bookOpenSvg"></div>
-        <h2 class="text-2xl font-bold text-slate-100 mb-2">Documentation</h2>
+        <div class="flex items-center gap-3 mb-4">
+          <SvgIcon name="book-open" size="md" class="text-purple-400 flex-shrink-0"></SvgIcon>
+          <h2 class="text-2xl font-bold text-slate-100">Documentation</h2>
+        </div>
         <p class="text-slate-400 mb-6">Your questions, answered</p>
         <ul class="flex gap-3 flex-wrap">
           <li>
@@ -85,8 +57,10 @@ const shareSvg = featherIcons.icons.share.toSvg({
 
       <!-- Social -->
       <div class="p-8">
-        <div class="w-6 h-6 mb-4 text-purple-400 inline-block" v-html="share2Svg"></div>
-        <h2 class="text-2xl font-bold text-slate-100 mb-2">Connect with us</h2>
+        <div class="flex items-center gap-3 mb-4">
+          <SvgIcon name="share-2" size="md" class="text-purple-400 flex-shrink-0"></SvgIcon>
+          <h2 class="text-2xl font-bold text-slate-100">Connect with us</h2>
+        </div>
         <p class="text-slate-400 mb-6">Join the Vite community</p>
         <ul class="grid grid-cols-2 gap-2">
           <li>
@@ -98,7 +72,7 @@ const shareSvg = featherIcons.icons.share.toSvg({
               class="w-full"
               title="GitHub"
             >
-              <span class="w-5 h-5" v-html="githubSvg"></span>
+              <SvgIcon name="github" size="sm"></SvgIcon>
               GitHub
             </BaseLink>
           </li>
@@ -111,7 +85,7 @@ const shareSvg = featherIcons.icons.share.toSvg({
               class="w-full"
               title="Discord"
             >
-              <span class="w-5 h-5" v-html="messageCircleSvg"></span>
+              <SvgIcon name="message-circle" size="sm"></SvgIcon>
               Discord
             </BaseLink>
           </li>
@@ -124,7 +98,7 @@ const shareSvg = featherIcons.icons.share.toSvg({
               class="w-full"
               title="X.com"
             >
-              <span class="w-5 h-5" v-html="twitterSvg"></span>
+              <SvgIcon name="twitter" size="sm"></SvgIcon>
               X.com
             </BaseLink>
           </li>
@@ -137,7 +111,7 @@ const shareSvg = featherIcons.icons.share.toSvg({
               class="w-full"
               title="Bluesky"
             >
-              <span class="w-5 h-5" v-html="shareSvg"></span>
+              <SvgIcon name="share" size="sm"></SvgIcon>
               Bluesky
             </BaseLink>
           </li>
