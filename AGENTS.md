@@ -13,13 +13,13 @@ Do not run `vitest`, `vite build`, or `vue-tsc` directly. Always use the npm scr
 
 ## Scripts
 
-| Command | Effect | Use when |
-|---------|--------|----------|
-| `npm run dev` | Start Vite dev server (port 5173 or next available) | Local development |
-| `npm run build` | Full production build with quality gates | Deploying or verifying release |
-| `npm run test -- --run` | Run tests once with quality checks | CI or one-off verification |
-| `npm run test` | Tests in watch mode with quality checks | Active development |
-| `npm run check` | Format + lint only, no tests | Quick validation |
+| Command                 | Effect                                              | Use when                       |
+| ----------------------- | --------------------------------------------------- | ------------------------------ |
+| `npm run dev`           | Start Vite dev server (port 5173 or next available) | Local development              |
+| `npm run build`         | Full production build with quality gates            | Deploying or verifying release |
+| `npm run test -- --run` | Run tests once with quality checks                  | CI or one-off verification     |
+| `npm run test`          | Tests in watch mode with quality checks             | Active development             |
+| `npm run check`         | Format + lint only, no tests                        | Quick validation               |
 
 ## Format & Lint Behavior
 
@@ -42,6 +42,7 @@ const githubSvg = featherIcons.icons.github.toSvg({ class: 'w-5 h-5', 'stroke-wi
 ```
 
 Then use `v-html` in templates:
+
 ```html
 <span class="w-5 h-5" v-html="githubSvg"></span>
 ```

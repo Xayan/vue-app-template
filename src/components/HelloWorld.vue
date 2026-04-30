@@ -4,6 +4,8 @@ import { ref } from 'vue'
 import heroImg from '../assets/hero.png'
 import viteLogo from '../assets/vite.svg'
 import vueLogo from '../assets/vue.svg'
+import BaseButton from './BaseButton.vue'
+import BaseLink from './BaseLink.vue'
 
 const count = ref(0)
 
@@ -35,7 +37,7 @@ const shareSvg = featherIcons.icons.share.toSvg({
 </script>
 
 <template>
-  <div class="min-h-screen flex flex-col bg-linear-to-br from-slate-300 to-slate-50">
+  <div class="min-h-screen flex flex-col bg-gradient-to-br from-slate-900 to-slate-950">
     <!-- Hero Section -->
     <section class="flex-1 flex flex-col items-center justify-center px-4 py-20">
       <div class="relative mb-8 h-44 w-44 flex items-center justify-center">
@@ -49,106 +51,100 @@ const shareSvg = featherIcons.icons.share.toSvg({
       </div>
 
       <div class="text-center mb-8">
-        <h1 class="text-5xl font-bold text-slate-900 mb-4">Get started</h1>
-        <p class="text-lg text-slate-600">
+        <h1 class="text-5xl font-bold text-slate-100 mb-4">Get started</h1>
+        <p class="text-lg text-slate-400">
           Edit
-          <code class="bg-slate-200 px-2 py-1 rounded text-sm">src/App.vue</code>
+          <code class="bg-slate-800 px-2 py-1 rounded text-sm">src/App.vue</code>
           and save to test
-          <code class="bg-slate-200 px-2 py-1 rounded text-sm">HMR</code>
+          <code class="bg-slate-800 px-2 py-1 rounded text-sm">HMR</code>
         </p>
       </div>
 
-      <button
-        type="button"
-        class="px-6 py-3 bg-linear-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-lg hover:from-purple-700 hover:to-pink-700 transition-all duration-200 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl"
-        @click="count++"
-      >
-        Count is {{ count }}
-      </button>
+      <BaseButton variant="primary" size="lg" @click="count++"> Count is {{ count }} </BaseButton>
     </section>
 
-    <div class="border-t border-slate-200"></div>
+    <div class="border-t border-slate-700"></div>
 
     <!-- Next Steps Section -->
-    <section class="grid grid-cols-1 md:grid-cols-2 border-t border-slate-200">
+    <section class="grid grid-cols-1 md:grid-cols-2 border-t border-slate-700">
       <!-- Documentation -->
-      <div class="p-8 border-b md:border-b-0 md:border-r border-slate-200">
-        <div class="w-6 h-6 mb-4 text-blue-600 inline-block" v-html="bookOpenSvg"></div>
-        <h2 class="text-2xl font-bold text-slate-900 mb-2">Documentation</h2>
-        <p class="text-slate-600 mb-6">Your questions, answered</p>
+      <div class="p-8 border-b md:border-b-0 md:border-r border-slate-700">
+        <div class="w-6 h-6 mb-4 text-purple-400 inline-block" v-html="bookOpenSvg"></div>
+        <h2 class="text-2xl font-bold text-slate-100 mb-2">Documentation</h2>
+        <p class="text-slate-400 mb-6">Your questions, answered</p>
         <ul class="flex gap-3 flex-wrap">
           <li>
-            <a
-              href="https://vite.dev/"
-              target="_blank"
-              class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-900 rounded-lg transition-colors"
-            >
+            <BaseLink href="https://vite.dev/" variant="primary" size="md" target="_blank">
               <img class="h-5 w-5" :src="viteLogo" alt="" />
               Explore Vite
-            </a>
+            </BaseLink>
           </li>
           <li>
-            <a
-              href="https://vuejs.org/"
-              target="_blank"
-              class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-900 rounded-lg transition-colors"
-            >
+            <BaseLink href="https://vuejs.org/" variant="secondary" size="md" target="_blank">
               <img class="h-5 w-5" :src="vueLogo" alt="" />
               Learn more
-            </a>
+            </BaseLink>
           </li>
         </ul>
       </div>
 
       <!-- Social -->
       <div class="p-8">
-        <div class="w-6 h-6 mb-4 text-amber-600 inline-block" v-html="share2Svg"></div>
-        <h2 class="text-2xl font-bold text-slate-900 mb-2">Connect with us</h2>
-        <p class="text-slate-600 mb-6">Join the Vite community</p>
+        <div class="w-6 h-6 mb-4 text-purple-400 inline-block" v-html="share2Svg"></div>
+        <h2 class="text-2xl font-bold text-slate-100 mb-2">Connect with us</h2>
+        <p class="text-slate-400 mb-6">Join the Vite community</p>
         <ul class="grid grid-cols-2 gap-2">
           <li>
-            <a
+            <BaseLink
               href="https://github.com/vitejs/vite"
+              variant="secondary"
+              size="md"
               target="_blank"
-              class="inline-flex items-center justify-center gap-2 w-full px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-900 rounded-lg transition-colors"
+              class="w-full"
               title="GitHub"
             >
               <span class="w-5 h-5" v-html="githubSvg"></span>
               GitHub
-            </a>
+            </BaseLink>
           </li>
           <li>
-            <a
+            <BaseLink
               href="https://chat.vite.dev/"
+              variant="secondary"
+              size="md"
               target="_blank"
-              class="inline-flex items-center justify-center gap-2 w-full px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-900 rounded-lg transition-colors"
+              class="w-full"
               title="Discord"
             >
               <span class="w-5 h-5" v-html="messageCircleSvg"></span>
               Discord
-            </a>
+            </BaseLink>
           </li>
           <li>
-            <a
+            <BaseLink
               href="https://x.com/vite_js"
+              variant="secondary"
+              size="md"
               target="_blank"
-              class="inline-flex items-center justify-center gap-2 w-full px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-900 rounded-lg transition-colors"
+              class="w-full"
               title="X.com"
             >
               <span class="w-5 h-5" v-html="twitterSvg"></span>
               X.com
-            </a>
+            </BaseLink>
           </li>
           <li>
-            <a
+            <BaseLink
               href="https://bsky.app/profile/vite.dev"
+              variant="secondary"
+              size="md"
               target="_blank"
-              class="inline-flex items-center justify-center gap-2 w-full px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-900 rounded-lg transition-colors"
+              class="w-full"
               title="Bluesky"
             >
               <span class="w-5 h-5" v-html="shareSvg"></span>
               Bluesky
-            </a>
+            </BaseLink>
           </li>
         </ul>
       </div>
