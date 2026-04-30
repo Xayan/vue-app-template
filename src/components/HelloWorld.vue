@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import * as featherIcons from 'feather-icons'
 import { ref } from 'vue'
-import heroImg from '../assets/hero.png'
 import viteLogo from '../assets/vite.svg'
 import vueLogo from '../assets/vue.svg'
 import BaseButton from './BaseButton.vue'
@@ -10,6 +9,10 @@ import BaseLink from './BaseLink.vue'
 const count = ref(0)
 
 // Get SVG strings from Feather icons
+const zapSvg = featherIcons.icons.zap.toSvg({
+  class: 'w-24 h-24',
+  'stroke-width': '1.5',
+})
 const bookOpenSvg = featherIcons.icons['book-open'].toSvg({
   class: 'w-6 h-6',
   'stroke-width': '2',
@@ -40,15 +43,7 @@ const shareSvg = featherIcons.icons.share.toSvg({
   <div class="min-h-screen flex flex-col bg-gradient-to-br from-slate-900 to-slate-950">
     <!-- Hero Section -->
     <section class="flex-1 flex flex-col items-center justify-center px-4 py-20">
-      <div class="relative mb-8 h-44 w-44 flex items-center justify-center">
-        <img :src="heroImg" class="h-44 w-44" width="170" height="179" alt="" />
-        <img :src="vueLogo" class="absolute h-28 w-28 transform -rotate-45" alt="Vue logo" />
-        <img
-          :src="viteLogo"
-          class="absolute h-20 w-20 transform -rotate-45 translate-y-12"
-          alt="Vite logo"
-        />
-      </div>
+      <div class="mb-8 text-pink-500" v-html="zapSvg"></div>
 
       <div class="text-center mb-8">
         <h1 class="text-5xl font-bold text-slate-100 mb-4">Get started</h1>
