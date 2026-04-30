@@ -4,6 +4,7 @@ import { getButtonClasses, type ButtonVariant, type ButtonSize } from '../utils/
 
 interface Props {
   href: string
+  button?: boolean
   variant?: ButtonVariant
   size?: ButtonSize
   target?: '_blank' | '_self' | '_parent' | '_top'
@@ -12,12 +13,16 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
+  button: false,
   variant: 'primary',
   size: 'md',
   target: '_self',
 })
 
 const linkClasses = computed(() => {
+  if (!props.button) {
+    return props.class || ''
+  }
   const baseClasses = getButtonClasses(props.variant, props.size)
   return props.class ? `${baseClasses} ${props.class}` : baseClasses
 })

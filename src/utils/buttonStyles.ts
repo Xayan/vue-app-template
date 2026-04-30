@@ -16,7 +16,7 @@ const sizeClasses: Record<ButtonSize, string> = {
 }
 
 const baseClasses =
-  'font-semibold rounded-lg transition-all duration-200 transform hover:scale-105 active:scale-95 inline-flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100'
+  'font-semibold rounded-lg transition-all duration-200 transform active:scale-95 inline-flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed'
 
 export function getButtonClasses(
   variant: ButtonVariant = 'primary',
