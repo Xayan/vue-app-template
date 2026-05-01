@@ -66,19 +66,6 @@ npm run test --run   # Run tests once
 npm run test:ui      # Interactive test UI dashboard
 ```
 
-## 📦 Key Dependencies
-
-| Package              | Version  | Purpose                    |
-| -------------------- | -------- | -------------------------- |
-| vue                  | ^3.5.32  | UI framework               |
-| vue-router           | ^5.0.6   | Client-side routing        |
-| lucide-vue-next      | ^0.438.0 | Icon library               |
-| tailwindcss          | ^4.2.4   | CSS utility framework      |
-| @tailwindcss/postcss | ^4.2.4   | Tailwind v4 PostCSS plugin |
-| vitest               | ^4.1.5   | Unit testing               |
-| prettier             | ^3.8.3   | Code formatting            |
-| eslint               | ^10.2.1  | Code linting               |
-
 ## ✨ Features
 
 - ✅ **TypeScript Support** - Full type safety across the entire project
@@ -95,20 +82,17 @@ npm run test:ui      # Interactive test UI dashboard
 
 ## 🚀 Quick Start
 
-### 1. Clone the repository
+### 1. Set up the project
 
 ```bash
-git clone https://github.com/Xayan/vue-app-template.git
-cd vue-app-template
-```
+# Clone the repo and navigate into it
+git clone https://github.com/Xayan/vue-app-template.git && cd vue-app-template
 
-### 2. Install dependencies
-
-```bash
+# Install dependencies
 npm install
 ```
 
-### 3. Start development server
+### 2. Start Development Server
 
 ```bash
 npm run dev
@@ -116,7 +100,7 @@ npm run dev
 
 The app will be available at `http://localhost:5173`
 
-### 4. Build for production
+### 3. Build for production
 
 ```bash
 npm run build
@@ -166,36 +150,6 @@ Semantic link component with optional button styling:
 
 **Props:** `href`, `target`, `rel`, `button` (enable button styling), `variant`, `size`
 
-## 📐 Typography
-
-Semantic typography classes are defined in `src/assets/css/typography.css`:
-
-- `.heading-page` - Large page titles (5xl)
-- `.heading-section` - Section headings (2xl)
-- `.subheading-descriptive` - Descriptive text
-- `.text-body-primary` - Body text with primary color
-- `.text-emphasis-pink` - Pink emphasized text
-
-These use `@apply` to encapsulate Tailwind utilities while maintaining semantic HTML.
-
-### CSS Modules
-
-The project organizes CSS into modular files in `src/assets/css/`:
-
-- **typography.css** - Semantic text styling classes with `@apply`
-- **animation.css** - Custom animations (e.g., `animate-periodic-bounce`)
-
-All modules are imported into `src/style.css` which is the main CSS entry point for the application.
-
-## 📚 Learning Resources
-
-- [Vue 3 Documentation](https://vuejs.org/)
-- [Vue Router Guide](https://router.vuejs.org/)
-- [Vite Documentation](https://vitejs.dev/)
-- [TailwindCSS v4 Documentation](https://tailwindcss.com/)
-- [Lucide Icons](https://lucide.dev/)
-- [Vitest Documentation](https://vitest.dev/)
-
 ## 🔧 Config Files
 
 - `vite.config.ts` - Vite configuration
@@ -204,14 +158,27 @@ All modules are imported into `src/style.css` which is the main CSS entry point 
 - `tailwind.config.js` - TailwindCSS configuration
 - `postcss.config.js` - PostCSS configuration
 - `eslint.config.js` - ESLint configuration
-- `.prettierrc` - Prettier configuration
+- `.prettierrc`, `.prettierignore` - Prettier configuration
 
-## 📝 Notes
+---
 
-- This template uses Vue 3 `<script setup>` syntax
-- Component names should be multi-word (enforced by ESLint)
-- All code is automatically formatted and linted before commits
-- TypeScript strict mode is enabled
+- `opencode.json` - OpenCode configuration for MCP integration
+- `AGENTS.md` - Documentation for agents and project structure
+
+## 📚 Read Also
+
+### Documentation
+
+- [State Management](docs/STATE_MANAGEMENT.md)
+
+### External Resources
+
+- [Vue 3 Documentation](https://vuejs.org/)
+- [Vue Router Guide](https://router.vuejs.org/)
+- [Vite Documentation](https://vitejs.dev/)
+- [TailwindCSS v4 Documentation](https://tailwindcss.com/)
+- [Lucide Icons](https://lucide.dev/)
+- [Vitest Documentation](https://vitest.dev/)
 
 ## 📄 License
 

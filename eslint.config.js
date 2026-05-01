@@ -16,6 +16,9 @@ export default [
       ecmaVersion: 'latest',
       sourceType: 'module',
       parser: parserTypeScript,
+      globals: {
+        fetch: 'readonly',
+      },
     },
     plugins: {
       '@typescript-eslint': pluginTypeScript,
