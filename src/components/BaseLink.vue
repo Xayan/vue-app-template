@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import { getButtonClasses, type ButtonSize, type ButtonVariant } from '../lib/buttonStyles'
 import { cn } from '../lib/utils'
-import { getButtonClasses, type ButtonVariant, type ButtonSize } from '../utils/buttonStyles'
 
 interface Props {
   href: string

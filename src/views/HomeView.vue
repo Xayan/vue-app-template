@@ -43,7 +43,7 @@ const links: Link[] = [
 <template>
   <div class="min-h-screen flex flex-col bg-linear-to-br from-slate-800 to-slate-950">
     <!-- Hero Section -->
-    <section class="flex-1 flex flex-col items-center justify-center px-4 py-20">
+    <main class="flex-1 flex flex-col items-center justify-center px-4 py-20">
       <Zap :stroke-width="1.5" :size="56" class="text-yellow-300 animate-periodic-bounce" />
 
       <div class="text-center mt-8 mb-8">
@@ -89,6 +89,6 @@ const links: Link[] = [
           </BaseLink>
         </li>
       </ul>
-    </section>
+    </main>
   </div>
 </template>
