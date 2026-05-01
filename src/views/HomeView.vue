@@ -52,21 +52,25 @@ interface Link {
   logo: string
 }
 
+const getLogoUrl = (name: string) => {
+  return new URL(`../assets/img/logo/${name}.svg`, import.meta.url).href
+}
+
 const links: Link[] = [
-  { name: 'Vue 3', url: 'https://vuejs.org/', logo: '/src/assets/img/logo/vue.svg' },
-  { name: 'Reka UI', url: 'https://reka-ui.com/', logo: '/src/assets/img/logo/reka.svg' },
+  { name: 'Vue 3', url: 'https://vuejs.org/', logo: getLogoUrl('vue') },
+  { name: 'Reka UI', url: 'https://reka-ui.com/', logo: getLogoUrl('reka') },
   {
     name: 'TypeScript',
     url: 'https://www.typescriptlang.org/',
-    logo: '/src/assets/img/logo/typescript.svg',
+    logo: getLogoUrl('typescript'),
   },
   {
     name: 'Tailwind CSS',
     url: 'https://tailwindcss.com/',
-    logo: '/src/assets/img/logo/tailwind.svg',
+    logo: getLogoUrl('tailwind'),
   },
-  { name: 'Lucide Icons', url: 'https://lucide.dev/', logo: '/src/assets/img/logo/lucide.svg' },
-  { name: 'Vite', url: 'https://vite.dev/', logo: '/src/assets/img/logo/vite.svg' },
+  { name: 'Lucide Icons', url: 'https://lucide.dev/', logo: getLogoUrl('lucide') },
+  { name: 'Vite', url: 'https://vite.dev/', logo: getLogoUrl('vite') },
 ]
 </script>
 
