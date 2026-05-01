@@ -13,7 +13,7 @@ interface Link {
 }
 
 const getLogoUrl = (name: string) => {
-  return new URL(`../assets/img/logo/${name}.svg`, import.meta.url).href
+  return `/logo/${name}.svg`
 }
 
 const links: Link[] = [
@@ -27,36 +27,16 @@ const links: Link[] = [
     url: 'https://tailwindcss.com/',
     logo: getLogoUrl('tailwind'),
   },
-  {
-    name: 'Vue 3',
-    url: 'https://vuejs.org/',
-    logo: getLogoUrl('vue'),
-  },
-  {
-    name: 'Reka UI',
-    url: 'https://reka-ui.com/',
-    logo: getLogoUrl('reka')
-  },
-  {
-    name: 'Pinia',
-    url: 'https://pinia.vuejs.org/',
-    logo: getLogoUrl('pinia')
-  },
+  { name: 'Vue 3', url: 'https://vuejs.org/', logo: getLogoUrl('vue') },
+  { name: 'Reka UI', url: 'https://reka-ui.com/', logo: getLogoUrl('reka') },
+  { name: 'Pinia', url: 'https://pinia.vuejs.org/', logo: getLogoUrl('pinia') },
   {
     name: 'TanStack Query',
     url: 'https://tanstack.com/query/latest',
     logo: getLogoUrl('tanstack-query'),
   },
-  {
-    name: 'Lucide Icons',
-    url: 'https://lucide.dev/',
-    logo: getLogoUrl('lucide')
-  },
-  {
-    name: 'Vite',
-    url: 'https://vite.dev/',
-    logo: getLogoUrl('vite')
-  },
+  { name: 'Lucide Icons', url: 'https://lucide.dev/', logo: getLogoUrl('lucide') },
+  { name: 'Vite', url: 'https://vite.dev/', logo: getLogoUrl('vite') },
 ]
 </script>
 
@@ -64,9 +44,9 @@ const links: Link[] = [
   <div class="min-h-screen flex flex-col bg-linear-to-br from-slate-800 to-slate-950">
     <!-- Hero Section -->
     <section class="flex-1 flex flex-col items-center justify-center px-4 py-20">
-      <Zap :stroke-width="1.5" class="w-12 h-12 text-yellow-300 mb-8 animate-periodic-bounce" />
+      <Zap :stroke-width="1.5" :size="56" class="text-yellow-300 animate-periodic-bounce" />
 
-      <div class="text-center mb-8">
+      <div class="text-center mt-8 mb-8">
         <h1 class="heading-page mb-4">Get started</h1>
         <p class="text-body-primary">
           Edit
