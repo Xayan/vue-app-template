@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import * as lucideVueNext from 'lucide-vue-next'
 import { computed } from 'vue'
+import { cn } from '../lib/utils'
 
 interface Props {
   name: string
@@ -39,16 +40,14 @@ const getIconComponent = () => {
 const IconComponent = computed(() => getIconComponent())
 
 const iconClasses = computed(() => {
-  return `${sizeMap[props.size]} ${props.class || ''}`
+  return cn(sizeMap[props.size], props.class)
 })
 </script>
 
 <template>
   <component
-    :is="IconComponent"
+    :is="IconComponent as any"
     v-if="IconComponent"
-    :size="size"
-    :stroke-width="strokeWidth"
-    :class="iconClasses"
+    v-bind="{ 'stroke-width': strokeWidth, class: iconClasses }"
   />
 </template>

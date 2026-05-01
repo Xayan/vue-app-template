@@ -1,0 +1,17 @@
+@theme {
+  --animate-periodic-bounce: periodic-bounce 2.5s ease-in-out infinite;
+
+  @keyframes periodic-bounce {
+    0%,
+    70%,
+    100% {
+      transform: translateY(0);
+    }
+    80% {
+      transform: translateY(20px);
+    }
+    90% {
+      transform: translateY(-10px);
+    }
+  }
+}

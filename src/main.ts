@@ -1,9 +1,9 @@
-import { createApp } from 'vue'
+import * as RekaUI from 'reka-ui'
 import type { Component } from 'vue'
-import './style.css'
+import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
-import * as RekaUI from 'reka-ui'
+import './style.css'
 
 const app = createApp(App)
 

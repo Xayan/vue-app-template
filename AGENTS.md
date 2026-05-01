@@ -31,27 +31,25 @@ Do not run `vitest`, `vite build`, or `vue-tsc` directly. Always use the npm scr
 
 ## Icons
 
-Project uses **Feather Icons** (not an icon font; direct SVG via npm).
+Project uses **Lucide Icons** (Vue components; direct SVG via npm).
 
-In components, import and render SVGs at script setup time:
+In components, use the `SvgIcon` component wrapper:
 
 ```typescript
-import * as featherIcons from 'feather-icons'
-
-const githubSvg = featherIcons.icons.github.toSvg({ class: 'w-5 h-5', 'stroke-width': '2' })
+import SvgIcon from './SvgIcon.vue'
 ```
 
-Then use `v-html` in templates:
+Then use in templates with kebab-case icon names:
 
 ```html
-<span class="w-5 h-5" v-html="githubSvg"></span>
+<SvgIcon name="zap" size="md" :stroke-width="2" class="text-pink-500" />
 ```
 
-Do not dynamically compute SVG strings in templates; compute once at setup time.
+The `SvgIcon` component automatically converts kebab-case names to PascalCase for Lucide icons.
 
-## TypeScript & Feather Icons
+## TypeScript & Icons
 
-- `feather-icons` has @types package: `@types/feather-icons`
+- `lucide-vue-next` is the icon library (pre-installed, no additional types needed)
 - Vue Router imports must use `type` for types: `import type { RouteRecordRaw } from 'vue-router'`
 - `vue-tsc -b` enforces `verbatimModuleSyntax` in tsconfig; respect type-only imports
 
@@ -62,6 +60,7 @@ Do not dynamically compute SVG strings in templates; compute once at setup time.
 - Globals: `describe`, `it`, `expect` (no import needed)
 - Path alias `@` resolves to `src/`
 - Tests automatically run quality checks (`npm run check`) first; if they fail, tests do not run
+- **Always run `npm test -- --run` after each batch of changes** to ensure everything still works before proceeding
 
 ## TailwindCSS v4
 
@@ -82,9 +81,28 @@ Do not dynamically compute SVG strings in templates; compute once at setup time.
 - Default branch: `master` (configured globally via `git config --global init.defaultBranch master`)
 - `.gitignore` includes: `node_modules`, `dist`, `.vscode`, `.DS_Store`, log files
 - Repository: `https://github.com/Xayan/vue-app-template`
+- **Do not automatically create git commits unless specifically asked to do so**
+- Only commit when explicitly requested by the user
+
+## Serena MCP Server
+
+This project is configured to work with the **Serena MCP server**, a powerful symbolic code analysis tool. If available in your OpenCode environment, it is **strongly encouraged** to use it for:
+
+- **Efficient code exploration** - Use symbolic tools instead of reading entire files
+- **Precise code modifications** - Edit symbols directly without affecting surrounding code
+- **Project understanding** - Get overviews of code structure and relationships
+- **Refactoring** - Safely rename symbols and find all references
+
+**Serena Instructions:**
+
+- Always read the Serena Instructions Manual before starting work (call `initial_instructions` tool)
+- Prioritize symbolic tools over generic file reading for token efficiency
+- Use `find_symbol`, `get_symbols_overview`, and `search_for_pattern` for exploration
+- Use `replace_symbol_body` for complete symbol replacements
+- Use `replace_content` for targeted line-based edits
+- Project name in Serena: `test`
 
 ## Known Quirks
 
-- First `npm run dev` may show "Port 5173 is in use, trying another one..." if 5173 is taken
 - Vite will re-optimize dependencies if `package-lock.json` changes
 - Component tests in `__tests__/` must find their parent component via relative paths (e.g., `../HelloWorld.vue`, not `../components/HelloWorld.vue`)

@@ -1,0 +1,15 @@
+FROM ghcr.io/oraios/serena:latest
+
+# Install Java and Clojure CLI
+RUN apt-get update && apt-get install -y \
+    openjdk-21-jdk-headless \
+    wget \
+    rlwrap
+
+# Debian's Clojure is outdated and project indexing fails on that version, needs a different source
+RUN wget https://github.com/clojure/brew-install/releases/latest/download/linux-install.sh -O /tmp/clojure-install.sh \
+    && chmod +x /tmp/clojure-install.sh \
+    && bash /tmp/clojure-install.sh \
+    && rm -f /tmp/clojure-install.sh \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*

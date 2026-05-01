@@ -1,19 +1,23 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import BaseButton from './BaseButton.vue'
-import BaseLink from './BaseLink.vue'
-import SvgIcon from './SvgIcon.vue'
+import BaseButton from '../components/BaseButton.vue'
+import BaseLink from '../components/BaseLink.vue'
+import SvgIcon from '../components/SvgIcon.vue'
 
 const count = ref(0)
 
-interface DocLink {
+interface Link {
   name: string
   url: string
   logo: string
 }
 
-const docs: DocLink[] = [
-  { name: 'TypeScript', url: 'https://www.typescriptlang.org/', logo: '/src/assets/typescript.svg' },
+const links: Link[] = [
+  {
+    name: 'TypeScript',
+    url: 'https://www.typescriptlang.org/',
+    logo: '/src/assets/typescript.svg',
+  },
   { name: 'Tailwind CSS', url: 'https://tailwindcss.com/', logo: '/src/assets/tailwind.svg' },
   { name: 'Vue 3', url: 'https://vuejs.org/', logo: '/src/assets/vue.svg' },
   { name: 'Reka UI', url: 'https://reka-ui.com/', logo: '/src/assets/reka.svg' },
@@ -26,31 +30,38 @@ const docs: DocLink[] = [
   <div class="min-h-screen flex flex-col bg-linear-to-br from-slate-800 to-slate-950">
     <!-- Hero Section -->
     <section class="flex-1 flex flex-col items-center justify-center px-4 py-20">
-      <SvgIcon name="zap" size="xl" :stroke-width="1.5" class="text-pink-500 mb-8"></SvgIcon>
+      <SvgIcon
+        name="zap"
+        size="xl"
+        :stroke-width="1.5"
+        class="text-yellow-300 mb-8 animate-periodic-bounce"
+      ></SvgIcon>
 
       <div class="text-center mb-8">
-        <h1 class="text-5xl font-bold text-slate-100 mb-4">Get started</h1>
-        <p class="text-lg text-slate-400">
+        <h1 class="heading-page mb-4">Get started</h1>
+        <p class="text-body-primary">
           Edit
-          <code class="bg-slate-800 px-2 py-1 rounded text-sm">src/App.vue</code>
+          <code>src/views/HomeView.vue</code>
           and save to test
-          <code class="bg-slate-800 px-2 py-1 rounded text-sm">HMR</code>
+          <code>HMR</code>
         </p>
       </div>
 
-      <BaseButton variant="primary" size="lg" @click="count++"> Count is {{ count }} </BaseButton>
+      <BaseButton variant="primary" size="lg" @click="count++" class="animate-periodic-shake">
+        Count is {{ count }}
+      </BaseButton>
 
-      <p class="text-lg text-pink-500 italic mt-2">Click to increment</p>
+      <p class="text-emphasis-pink mt-2">Click to increment</p>
 
       <div class="flex items-center gap-3 mt-20 mb-4">
-        <SvgIcon name="book-open" size="md" class="text-purple-400 shrink-0"></SvgIcon>
-        <h2 class="text-2xl font-bold text-slate-100">Documentation</h2>
+        <SvgIcon name="book-open-text" size="md" class="text-purple-400 shrink-0"></SvgIcon>
+        <h2 class="heading-section">Documentation</h2>
       </div>
 
-      <p class="text-slate-400 mb-6">Your questions, answered</p>
+      <p class="subheading-descriptive mb-6">Your questions, answered</p>
 
-      <ul class="grid grid-cols-2 gap-3 w-full max-w-md">
-        <li v-for="link in docs" :key="link.url">
+      <ul id="docs" class="grid grid-cols-2 gap-3 w-full max-w-md">
+        <li v-for="link in links" :key="link.url">
           <BaseLink
             :href="link.url"
             button

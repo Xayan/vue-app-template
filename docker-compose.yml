@@ -1,0 +1,28 @@
+services:
+  serena-mcp:
+    build:
+      context: .
+      dockerfile: Dockerfile.serena
+    container_name: serena-mcp-server
+    ports:
+      - "9121:9121"
+      - "24282:24282"
+    volumes:
+      - .:/workspaces/projects/vue-app-template
+      - serena-cache:/root/.serena
+    environment:
+      - SERENA_PROJECT_DIR=/workspaces/projects/vue-app-template
+    command: >
+      serena start-mcp-server --context ide --transport streamable-http --port
+      9121 --host 0.0.0.0 --project /workspaces/projects/vue-app-template
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:24282/" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+volumes:
+  serena-cache:
+    driver: local
