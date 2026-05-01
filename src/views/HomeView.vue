@@ -16,15 +16,16 @@ const links: Link[] = [
   {
     name: 'TypeScript',
     url: 'https://www.typescriptlang.org/',
-    logo: '/src/assets/typescript.svg',
+    logo: '/src/assets/img/logo/typescript.svg',
   },
-  { name: 'Tailwind CSS', url: 'https://tailwindcss.com/', logo: '/src/assets/tailwind.svg' },
-  { name: 'Vue 3', url: 'https://vuejs.org/', logo: '/src/assets/vue.svg' },
-  { name: 'Reka UI', url: 'https://reka-ui.com/', logo: '/src/assets/reka.svg' },
-  { name: 'Lucide Icons', url: 'https://lucide.dev/', logo: '/src/assets/lucide.svg' },
-  { name: 'Vite', url: 'https://vite.dev/', logo: '/src/assets/vite.svg' },
+  { name: 'Tailwind CSS', url: 'https://tailwindcss.com/', logo: '/src/assets/img/logo/tailwind.svg' },
+  { name: 'Vue 3', url: 'https://vuejs.org/', logo: '/src/assets/img/logo/vue.svg' },
+  { name: 'Reka UI', url: 'https://reka-ui.com/', logo: '/src/assets/img/logo/reka.svg' },
+  { name: 'Lucide Icons', url: 'https://lucide.dev/', logo: '/src/assets/img/logo/lucide.svg' },
+  { name: 'Vite', url: 'https://vite.dev/', logo: '/src/assets/img/logo/vite.svg' },
 ]
 </script>
+
 
 <template>
   <div class="min-h-screen flex flex-col bg-linear-to-br from-slate-800 to-slate-950">
