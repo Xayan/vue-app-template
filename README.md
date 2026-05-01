@@ -166,16 +166,6 @@ Semantic link component with optional button styling:
 
 **Props:** `href`, `target`, `rel`, `button` (enable button styling), `variant`, `size`
 
-### SvgIcon
-
-Icon wrapper for Lucide Icons with semantic sizing:
-
-```html
-<SvgIcon name="zap" size="md" :stroke-width="2" class="text-pink-500" />
-```
-
-**Props:** `name` (kebab-case icon name), `size` (sm/md/lg/xl), `strokeWidth`, `class`
-
 ## 📐 Typography
 
 Semantic typography classes are defined in `src/assets/css/typography.css`:

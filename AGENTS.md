@@ -35,7 +35,6 @@ Do not run `vitest`, `vite build`, or `vue-tsc` directly. Always use the npm scr
 
 - **BaseButton.vue** - Flexible button with variants (primary/secondary/danger/ghost) and sizes (sm/md/lg)
 - **BaseLink.vue** - Semantic `<a>` tag with optional button styling via `button` prop
-- **SvgIcon.vue** - Lucide icon wrapper with size presets (sm/md/lg/xl) and stroke width customization
 
 ### Button Styles
 
@@ -56,25 +55,10 @@ Do not run `vitest`, `vite build`, or `vue-tsc` directly. Always use the npm scr
 
 ## Icons
 
-Project uses **Lucide Icons** (Vue components; direct SVG via npm).
+Project uses **Lucide Icons** (Vue components).
 
-In components, use the `SvgIcon` component wrapper:
+## TypeScript
 
-```typescript
-import SvgIcon from './SvgIcon.vue'
-```
-
-Then use in templates with kebab-case icon names:
-
-```html
-<SvgIcon name="zap" size="md" :stroke-width="2" class="text-pink-500" />
-```
-
-The `SvgIcon` component automatically converts kebab-case names to PascalCase for Lucide icons.
-
-## TypeScript & Icons
-
-- `lucide-vue-next` is the icon library (pre-installed, no additional types needed)
 - Vue Router imports must use `type` for types: `import type { RouteRecordRaw } from 'vue-router'`
 - `vue-tsc -b` enforces `verbatimModuleSyntax` in tsconfig; respect type-only imports
 

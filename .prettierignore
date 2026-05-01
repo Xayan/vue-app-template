@@ -1,0 +1,39 @@
+# Build outputs
+dist/
+node_modules/
+.next/
+.nuxt/
+
+# Version control
+.git/
+.gitignore
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Lock files (should not be formatted)
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# Configuration files (YAML, shell scripts, etc.)
+docker-compose.yml
+Dockerfile*
+.dockerignore
+*.sh
+
+# Documentation
+docs/
+logs/
+
+# IDE/Editor config
+.vscode/
+.idea/
+
+# Project-specific
+.serena/
+AGENTS.md
+README.md
+opencode.json

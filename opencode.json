@@ -19,12 +19,11 @@
         "serena",
         "start-mcp-server",
         "--context",
-        "ide",
+        "copilot-cli",
         "--project",
         "vue-app-template"
       ],
-      "enabled": true,
-      "timeout": 30000
+      "enabled": true
     }
   }
 }

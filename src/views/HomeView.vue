@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { Zap, BookOpenText } from 'lucide-vue-next'
 import BaseButton from '../components/BaseButton.vue'
 import BaseLink from '../components/BaseLink.vue'
-import SvgIcon from '../components/SvgIcon.vue'
 
 const count = ref(0)
 
@@ -13,30 +13,28 @@ interface Link {
 }
 
 const links: Link[] = [
+  { name: 'Vue 3', url: 'https://vuejs.org/', logo: '/src/assets/img/logo/vue.svg' },
+  { name: 'Reka UI', url: 'https://reka-ui.com/', logo: '/src/assets/img/logo/reka.svg' },
   {
     name: 'TypeScript',
     url: 'https://www.typescriptlang.org/',
     logo: '/src/assets/img/logo/typescript.svg',
   },
-  { name: 'Tailwind CSS', url: 'https://tailwindcss.com/', logo: '/src/assets/img/logo/tailwind.svg' },
-  { name: 'Vue 3', url: 'https://vuejs.org/', logo: '/src/assets/img/logo/vue.svg' },
-  { name: 'Reka UI', url: 'https://reka-ui.com/', logo: '/src/assets/img/logo/reka.svg' },
+  {
+    name: 'Tailwind CSS',
+    url: 'https://tailwindcss.com/',
+    logo: '/src/assets/img/logo/tailwind.svg',
+  },
   { name: 'Lucide Icons', url: 'https://lucide.dev/', logo: '/src/assets/img/logo/lucide.svg' },
   { name: 'Vite', url: 'https://vite.dev/', logo: '/src/assets/img/logo/vite.svg' },
 ]
 </script>
 
-
 <template>
   <div class="min-h-screen flex flex-col bg-linear-to-br from-slate-800 to-slate-950">
     <!-- Hero Section -->
     <section class="flex-1 flex flex-col items-center justify-center px-4 py-20">
-      <SvgIcon
-        name="zap"
-        size="xl"
-        :stroke-width="1.5"
-        class="text-yellow-300 mb-8 animate-periodic-bounce"
-      ></SvgIcon>
+      <Zap :stroke-width="1.5" class="w-12 h-12 text-yellow-300 mb-8 animate-periodic-bounce" />
 
       <div class="text-center mb-8">
         <h1 class="heading-page mb-4">Get started</h1>
@@ -55,7 +53,7 @@ const links: Link[] = [
       <p class="text-emphasis-pink mt-2">Click to increment</p>
 
       <div class="flex items-center gap-3 mt-20 mb-4">
-        <SvgIcon name="book-open-text" size="md" class="text-purple-400 shrink-0"></SvgIcon>
+        <BookOpenText :size="24" class="text-purple-400 shrink-0" />
         <h2 class="heading-section">Documentation</h2>
       </div>
 
