@@ -1,50 +1,10 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from 'vue'
-import { Zap, BookOpenText, ChevronLeft, ChevronRight } from 'lucide-vue-next'
+import { BookOpenText, Zap } from 'lucide-vue-next'
 import BaseButton from '../components/BaseButton.vue'
 import BaseLink from '../components/BaseLink.vue'
 import { useCounterStore } from '../stores/counter'
-import { useUsers } from '../composables/useUsers'
 
 const counter = useCounterStore()
-const { data: users, isPending, error, refetch } = useUsers()
-
-const currentAvatarIndex = ref(0)
-let autoRotateTimer: ReturnType<typeof setInterval> | null = null
-
-function nextAvatar() {
-  if (users.value) {
-    currentAvatarIndex.value = (currentAvatarIndex.value + 1) % users.value.length
-  }
-}
-
-function previousAvatar() {
-  if (users.value) {
-    currentAvatarIndex.value =
-      (currentAvatarIndex.value - 1 + users.value.length) % users.value.length
-  }
-}
-
-function startAutoRotate() {
-  autoRotateTimer = setInterval(() => {
-    nextAvatar()
-  }, 5000)
-}
-
-function stopAutoRotate() {
-  if (autoRotateTimer) {
-    clearInterval(autoRotateTimer)
-    autoRotateTimer = null
-  }
-}
-
-onMounted(() => {
-  startAutoRotate()
-})
-
-onUnmounted(() => {
-  stopAutoRotate()
-})
 
 interface Link {
   name: string
@@ -101,7 +61,7 @@ const links: Link[] = [
 
       <p class="text-emphasis-pink mt-2">Click to increment</p>
 
-      <div class="flex items-center gap-3 mt-20 mb-4">
+      <div class="flex items-center justify-center gap-3 mt-20 mb-4">
         <BookOpenText :size="24" class="text-purple-400 shrink-0" />
         <h2 class="heading-section">Documentation</h2>
       </div>
@@ -123,77 +83,6 @@ const links: Link[] = [
           </BaseLink>
         </li>
       </ul>
-
-      <!-- Avatar Carousel Section -->
-      <div class="mt-16 w-full max-w-md">
-        <div class="flex items-center gap-3 mb-6">
-          <h2 class="heading-section">Featured Users</h2>
-        </div>
-
-        <div v-if="isPending" class="text-center py-8">
-          <p class="text-body-primary">Loading avatars...</p>
-        </div>
-
-        <div v-else-if="error" class="text-center py-8">
-          <p class="text-red-400">Failed to load avatars</p>
-          <BaseButton variant="secondary" size="sm" @click="() => refetch()" class="mt-4">
-            Retry
-          </BaseButton>
-        </div>
-
-        <div v-else-if="users" class="flex flex-col items-center gap-4">
-          <!-- Avatar Display -->
-          <div
-            class="relative w-32 h-32 rounded-full overflow-hidden bg-slate-700 flex items-center justify-center shadow-lg"
-          >
-            <img
-              :src="users[currentAvatarIndex].avatar"
-              :alt="users[currentAvatarIndex].name"
-              class="w-full h-full object-cover"
-            />
-          </div>
-
-          <!-- User Info -->
-          <div class="text-center">
-            <p class="text-lg font-semibold text-slate-100">{{ users[currentAvatarIndex].name }}</p>
-            <p class="text-sm text-slate-400">{{ users[currentAvatarIndex].email }}</p>
-          </div>
-
-          <!-- Navigation Controls -->
-          <div class="flex items-center gap-3">
-            <button
-              @click="previousAvatar"
-              class="p-2 rounded-lg bg-slate-700 hover:bg-slate-600 transition-colors"
-              aria-label="Previous user"
-            >
-              <ChevronLeft :size="20" class="text-slate-100" />
-            </button>
-
-            <div class="flex gap-2">
-              <button
-                v-for="(_, index) in users"
-                :key="index"
-                @click="currentAvatarIndex = index"
-                :class="[
-                  'w-2 h-2 rounded-full transition-all',
-                  index === currentAvatarIndex
-                    ? 'bg-pink-500 w-6'
-                    : 'bg-slate-600 hover:bg-slate-500',
-                ]"
-                :aria-label="`Go to user ${index + 1}`"
-              />
-            </div>
-
-            <button
-              @click="nextAvatar"
-              class="p-2 rounded-lg bg-slate-700 hover:bg-slate-600 transition-colors"
-              aria-label="Next user"
-            >
-              <ChevronRight :size="20" class="text-slate-100" />
-            </button>
-          </div>
-        </div>
-      </div>
     </section>
   </div>
 </template>

@@ -1,4 +1,3 @@
-import { VueQueryPlugin } from '@tanstack/vue-query'
 import { mount } from '@vue/test-utils'
 import { createPinia } from 'pinia'
 import { describe, expect, it } from 'vitest'
@@ -8,7 +7,7 @@ describe('HomeView.vue', () => {
   it('renders and contains counter button', () => {
     const wrapper = mount(HomeView, {
       global: {
-        plugins: [createPinia(), VueQueryPlugin],
+        plugins: [createPinia()],
       },
     })
 
@@ -18,7 +17,7 @@ describe('HomeView.vue', () => {
   it('increments count on button click', async () => {
     const wrapper = mount(HomeView, {
       global: {
-        plugins: [createPinia(), VueQueryPlugin],
+        plugins: [createPinia()],
       },
     })
 
@@ -34,7 +33,7 @@ describe('HomeView.vue', () => {
   it('renders documentation links', () => {
     const wrapper = mount(HomeView, {
       global: {
-        plugins: [createPinia(), VueQueryPlugin],
+        plugins: [createPinia()],
       },
     })
 
@@ -43,16 +42,5 @@ describe('HomeView.vue', () => {
 
     const links = docs.findAll('a')
     expect(links.length).toBeGreaterThan(0)
-  })
-
-  it('renders featured users section', () => {
-    const wrapper = mount(HomeView, {
-      global: {
-        plugins: [createPinia(), VueQueryPlugin],
-      },
-    })
-
-    const heading = wrapper.text()
-    expect(heading).toContain('Featured Users')
   })
 })
