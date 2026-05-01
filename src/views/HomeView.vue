@@ -17,8 +17,6 @@ const getLogoUrl = (name: string) => {
 }
 
 const links: Link[] = [
-  { name: 'Vue 3', url: 'https://vuejs.org/', logo: getLogoUrl('vue') },
-  { name: 'Reka UI', url: 'https://reka-ui.com/', logo: getLogoUrl('reka') },
   {
     name: 'TypeScript',
     url: 'https://www.typescriptlang.org/',
@@ -29,8 +27,36 @@ const links: Link[] = [
     url: 'https://tailwindcss.com/',
     logo: getLogoUrl('tailwind'),
   },
-  { name: 'Lucide Icons', url: 'https://lucide.dev/', logo: getLogoUrl('lucide') },
-  { name: 'Vite', url: 'https://vite.dev/', logo: getLogoUrl('vite') },
+  {
+    name: 'Vue 3',
+    url: 'https://vuejs.org/',
+    logo: getLogoUrl('vue'),
+  },
+  {
+    name: 'Reka UI',
+    url: 'https://reka-ui.com/',
+    logo: getLogoUrl('reka')
+  },
+  {
+    name: 'Pinia',
+    url: 'https://pinia.vuejs.org/',
+    logo: getLogoUrl('pinia')
+  },
+  {
+    name: 'TanStack Query',
+    url: 'https://tanstack.com/query/latest',
+    logo: getLogoUrl('tanstack-query'),
+  },
+  {
+    name: 'Lucide Icons',
+    url: 'https://lucide.dev/',
+    logo: getLogoUrl('lucide')
+  },
+  {
+    name: 'Vite',
+    url: 'https://vite.dev/',
+    logo: getLogoUrl('vite')
+  },
 ]
 </script>
 
