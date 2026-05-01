@@ -1,50 +1,38 @@
 # Vue App Template
 
+![Vue App Template](docs/demo.png)
+
 A modern, production-ready Vue 3 project template with TypeScript, Vite, TailwindCSS, and a complete development tooling setup.
 
 ## 🚀 Tech Stack
 
 ### Core Framework
 
-- **Vue 3** (3.5.32) - Progressive JavaScript framework for building user interfaces
-- **TypeScript** (6.0.2) - Type-safe JavaScript development
-- **Vite** (8.0.10) - Next-generation frontend build tool with lightning-fast HMR
+- **Vue 3** - Progressive JavaScript framework for building user interfaces
+- **TypeScript** - Type-safe JavaScript development
+- **Vite** - Next-generation frontend build tool with lightning-fast HMR
 
 ### Styling & UI
 
-- **TailwindCSS** (4.2.4) - Utility-first CSS framework
-- **PostCSS** (8.5.12) - CSS transformations
-- **Feather Icons** (4.29.0) - Beautiful, minimal SVG icons
+- **TailwindCSS v4** - Utility-first CSS framework with `@tailwindcss/postcss` plugin
+- **PostCSS** - CSS transformations with Autoprefixer
+- **Lucide Icons** - Beautiful, minimal SVG icons with Vue 3 components
 
 ### Routing
 
-- **Vue Router** (5.0.6) - Official router for Vue.js applications
+- **Vue Router** - Official router for Vue.js applications
 
 ### Code Quality & Formatting
 
-- **ESLint** (10.2.1) - JavaScript linter with Vue plugin support
-- **Prettier** (3.8.3) - Code formatter
-- **@typescript-eslint** (8.59.1) - TypeScript ESLint support
+- **ESLint** - JavaScript linter with Vue plugin support
+- **Prettier** - Code formatter
+- **@typescript-eslint** - TypeScript ESLint support
 
 ### Testing
 
-- **Vitest** (4.1.5) - Unit testing framework powered by Vite
-- **Vue Test Utils** (2.4.10) - Component testing utilities for Vue
-- **jsdom** (29.1.1) - DOM implementation for testing
-
-## 📋 Project Structure
-
-```
-src/
-├── components/          # Vue components
-│   ├── HelloWorld.vue  # Example component with TailwindCSS & Feather icons
-│   └── __tests__/      # Component tests
-├── views/              # Page components
-├── router/             # Vue Router configuration
-├── App.vue             # Root component
-├── main.ts             # Application entry point
-└── style.css           # Global styles (with Tailwind)
-```
+- **Vitest** - Unit testing framework powered by Vite
+- **Vue Test Utils** - Component testing utilities for Vue
+- **jsdom** - DOM implementation for testing
 
 ## 🛠️ Available Scripts
 
@@ -80,25 +68,29 @@ npm run test:ui      # Interactive test UI dashboard
 
 ## 📦 Key Dependencies
 
-| Package       | Version | Purpose               |
-| ------------- | ------- | --------------------- |
-| vue           | ^3.5.32 | UI framework          |
-| vue-router    | ^5.0.6  | Client-side routing   |
-| feather-icons | ^4.29.0 | Icon library          |
-| tailwindcss   | ^4.2.4  | CSS utility framework |
-| vitest        | ^4.1.5  | Unit testing          |
-| prettier      | ^3.8.3  | Code formatting       |
-| eslint        | ^10.2.1 | Code linting          |
+| Package              | Version  | Purpose                    |
+| -------------------- | -------- | -------------------------- |
+| vue                  | ^3.5.32  | UI framework               |
+| vue-router           | ^5.0.6   | Client-side routing        |
+| lucide-vue-next      | ^0.438.0 | Icon library               |
+| tailwindcss          | ^4.2.4   | CSS utility framework      |
+| @tailwindcss/postcss | ^4.2.4   | Tailwind v4 PostCSS plugin |
+| vitest               | ^4.1.5   | Unit testing               |
+| prettier             | ^3.8.3   | Code formatting            |
+| eslint               | ^10.2.1  | Code linting               |
 
 ## ✨ Features
 
 - ✅ **TypeScript Support** - Full type safety across the entire project
 - ✅ **Vite HMR** - Instant Hot Module Replacement during development
-- ✅ **TailwindCSS** - Utility-first styling with optimized bundle
+- ✅ **TailwindCSS v4** - Modern utility-first styling with semantic typography classes
+- ✅ **Component Library** - Reusable `BaseButton`, `BaseLink`, and `SvgIcon` components
 - ✅ **Routing** - Vue Router with lazy-loaded components
 - ✅ **Testing** - Vitest with component testing utilities
 - ✅ **Code Quality** - ESLint, Prettier, and TypeScript type checking
-- ✅ **Icons** - Feather Icons integration for beautiful SVG icons
+- ✅ **Icons** - Lucide Icons integration via `SvgIcon` component wrapper
+- ✅ **Semantic Typography** - CSS classes with `@apply` for consistent text styling
+- ✅ **Dark Theme** - Production-ready dark mode by default
 - ✅ **Pre-commit Quality** - Format and lint run automatically before builds and tests
 
 ## 🚀 Quick Start
@@ -139,7 +131,7 @@ The build process automatically:
 
 ## 🧪 Testing
 
-Example test included: `src/components/__tests__/HelloWorld.spec.ts`
+Example test included: `src/views/__tests__/HomeView.spec.ts`
 
 ```bash
 # Run tests once
@@ -152,23 +144,76 @@ npm run test
 npm run test:ui
 ```
 
+## 🎨 Component Library
+
+### BaseButton
+
+Flexible button component with multiple variants and sizes:
+
+```html
+<BaseButton variant="primary" size="lg" @click="handleClick"> Click me </BaseButton>
+```
+
+**Props:** `variant` (primary/secondary/danger/ghost), `size` (sm/md/lg), `disabled`, `type`
+
+### BaseLink
+
+Semantic link component with optional button styling:
+
+```html
+<BaseLink href="/docs" button variant="secondary"> Documentation </BaseLink>
+```
+
+**Props:** `href`, `target`, `rel`, `button` (enable button styling), `variant`, `size`
+
+### SvgIcon
+
+Icon wrapper for Lucide Icons with semantic sizing:
+
+```html
+<SvgIcon name="zap" size="md" :stroke-width="2" class="text-pink-500" />
+```
+
+**Props:** `name` (kebab-case icon name), `size` (sm/md/lg/xl), `strokeWidth`, `class`
+
+## 📐 Typography
+
+Semantic typography classes are defined in `src/assets/css/typography.css`:
+
+- `.heading-page` - Large page titles (5xl)
+- `.heading-section` - Section headings (2xl)
+- `.subheading-descriptive` - Descriptive text
+- `.text-body-primary` - Body text with primary color
+- `.text-emphasis-pink` - Pink emphasized text
+
+These use `@apply` to encapsulate Tailwind utilities while maintaining semantic HTML.
+
+### CSS Modules
+
+The project organizes CSS into modular files in `src/assets/css/`:
+
+- **typography.css** - Semantic text styling classes with `@apply`
+- **animation.css** - Custom animations (e.g., `animate-periodic-bounce`)
+
+All modules are imported into `src/style.css` which is the main CSS entry point for the application.
+
 ## 📚 Learning Resources
 
 - [Vue 3 Documentation](https://vuejs.org/)
 - [Vue Router Guide](https://router.vuejs.org/)
 - [Vite Documentation](https://vitejs.dev/)
-- [TailwindCSS Documentation](https://tailwindcss.com/)
-- [Feather Icons](https://feathericons.com/)
+- [TailwindCSS v4 Documentation](https://tailwindcss.com/)
+- [Lucide Icons](https://lucide.dev/)
 - [Vitest Documentation](https://vitest.dev/)
 
-## 🔧 Configuration Files
+## 🔧 Config Files
 
 - `vite.config.ts` - Vite configuration
 - `vitest.config.ts` - Vitest configuration
 - `tsconfig.json` - TypeScript configuration
 - `tailwind.config.js` - TailwindCSS configuration
 - `postcss.config.js` - PostCSS configuration
-- `eslint.config.js` - ESLint configuration (flat config)
+- `eslint.config.js` - ESLint configuration
 - `.prettierrc` - Prettier configuration
 
 ## 📝 Notes

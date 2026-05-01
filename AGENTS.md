@@ -29,6 +29,31 @@ Do not run `vitest`, `vite build`, or `vue-tsc` directly. Always use the npm scr
 - **Unused args** prefixed with `_` are allowed: `(_unused) => { ... }`
 - **Prettier + ESLint** are integrated; do not try to disable Prettier rules in ESLint
 
+## Components & Styling
+
+### Reusable Components
+
+- **BaseButton.vue** - Flexible button with variants (primary/secondary/danger/ghost) and sizes (sm/md/lg)
+- **BaseLink.vue** - Semantic `<a>` tag with optional button styling via `button` prop
+- **SvgIcon.vue** - Lucide icon wrapper with size presets (sm/md/lg/xl) and stroke width customization
+
+### Button Styles
+
+- Button styling logic extracted to `src/utils/buttonStyles.ts`
+- Exports `ButtonVariant`, `ButtonSize` types and `getButtonClasses(variant, size)` function
+- Used by both `BaseButton` and `BaseLink` for consistent styling
+
+### Typography CSS
+
+- Semantic typography classes in `src/assets/css/typography.css` using `@apply`
+- Classes: `.heading-page`, `.heading-section`, `.subheading-descriptive`, `.text-body-primary`, `.text-emphasis-pink`
+- Encapsulates Tailwind utilities while maintaining semantic HTML
+
+### Theme
+
+- Dark theme by default (no light mode classes)
+- Color palette: slate-800/900/100 range for dark backgrounds and text
+
 ## Icons
 
 Project uses **Lucide Icons** (Vue components; direct SVG via npm).
@@ -66,13 +91,23 @@ The `SvgIcon` component automatically converts kebab-case names to PascalCase fo
 
 - Uses new `@tailwindcss/postcss` plugin (not legacy `tailwindcss` PostCSS plugin)
 - CSS entry: `src/style.css` with `@import 'tailwindcss'`
-- No custom CSS classes in this template; all styling via Tailwind utilities
+- Semantic typography classes in `src/assets/css/typography.css` using `@apply`
 - PostCSS includes Autoprefixer (no manual vendor prefixes needed)
+
+## CSS Organization
+
+CSS is modularized into submodules in `src/assets/css/`:
+
+- **style.css** (main) - Entry point that imports Tailwind and all CSS modules
+- **typography.css** - Semantic text styling classes (`.heading-page`, `.heading-section`, `.subheading-descriptive`, `.text-body-primary`, `.text-emphasis-pink`)
+- **animation.css** - Custom animations (`.animate-periodic-bounce`, `.animate-periodic-shake`, etc.)
+
+New CSS modules should be created in `src/assets/css/` and imported in `src/style.css`. Keep CSS organized by concern (typography, animations, components, layouts, etc.).
 
 ## Routing
 
 - Router config: `src/router/index.ts`
-- Example view: `src/views/HomePage.vue`
+- Example view: `src/views/HomeView.vue`
 - Views lazy-load: `component: () => import('../views/PageName.vue')`
 - `App.vue` renders `<RouterView />`
 
@@ -101,6 +136,21 @@ This project is configured to work with the **Serena MCP server**, a powerful sy
 - Use `replace_symbol_body` for complete symbol replacements
 - Use `replace_content` for targeted line-based edits
 - Project name in Serena: `test`
+
+## Context7 MCP Server
+
+This project can also use the **Context7 MCP server** for accessing external library documentation and code examples. If available in your OpenCode environment, use it to:
+
+- **Research external libraries** - Query Vue, TailwindCSS, Vitest, TypeScript docs
+- **Find code examples** - Get practical patterns and best practices
+- **Resolve library IDs** - Use `resolve-library-id` to find official documentation sources
+- **Query documentation** - Use `query-docs` to search for specific implementation details
+
+**Context7 Workflow:**
+
+1. Call `context7_resolve-library-id` with library name and query to get the library ID
+2. Call `context7_query-docs` with the library ID and specific question
+3. Use results to inform implementation decisions or reference best practices
 
 ## Known Quirks
 
