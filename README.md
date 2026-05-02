@@ -36,6 +36,13 @@ A modern, production-ready Vue 3 project template with TypeScript, Vite, Tailwin
 - **Vitest** - Unit testing framework powered by Vite
 - **Vue Test Utils** - Component testing utilities for Vue
 - **jsdom** - DOM implementation for testing
+- **Playwright** - E2E testing framework with multi-browser support
+
+### Quality & CI/CD
+
+- **Husky** - Git hooks to enforce code quality
+- **lint-staged** - Run linters on staged files
+- **GitHub Actions** - Automated CI/CD pipeline
 
 ## 🛠️ Available Scripts
 
@@ -64,9 +71,11 @@ npm run lint:fix     # Auto-fix ESLint violations
 ### Testing
 
 ```bash
-npm run test         # Run tests in watch mode with quality checks
-npm run test --run   # Run tests once
-npm run test:ui      # Interactive test UI dashboard
+npm run test         # Run unit tests once with quality checks
+npm run test:watch   # Run unit tests in watch mode with quality checks
+npm run test:ui      # Interactive unit test UI dashboard
+npm run test:e2e     # Run E2E tests with Playwright
+npm run test:all     # Run all tests: unit (once) + E2E (quality checks enforced)
 ```
 
 ## ✨ Features
@@ -83,6 +92,9 @@ npm run test:ui      # Interactive test UI dashboard
 - ✅ **Semantic Typography** - CSS classes with `@apply` for consistent text styling
 - ✅ **Dark Theme** - Production-ready dark mode by default
 - ✅ **Pre-commit Quality** - Format and lint run automatically before builds and tests
+- ✅ **E2E Testing** - Playwright for comprehensive end-to-end testing
+- ✅ **GitHub Actions CI** - Automated testing and build verification
+- ✅ **Pre-commit Hooks** - Husky + lint-staged enforce quality before commits
 
 ## 🚀 Quick Start
 
@@ -119,18 +131,43 @@ The build process automatically:
 
 ## 🧪 Testing
 
+### Unit Tests
+
 Example test included: `src/views/__tests__/HomeView.spec.ts`
 
 ```bash
-# Run tests once
-npm run test -- --run
-
-# Run tests in watch mode
+# Run tests once (use in CI or for quick verification)
 npm run test
+
+# Run tests in watch mode (use during development)
+npm run test:watch
 
 # View interactive test dashboard
 npm run test:ui
 ```
+
+### E2E Tests
+
+Example E2E test included: `e2e/example.spec.ts`
+
+```bash
+# Run E2E tests across all browsers
+npm run test:e2e
+
+# First time setup: install browsers
+npx playwright install
+```
+
+Tests run on Chromium, Firefox, and WebKit in CI and can be run locally with the dev server running.
+
+### Full Test Suite
+
+```bash
+# Run all tests: unit (once) + E2E with quality checks
+npm run test:all
+```
+
+This command enforces the complete pipeline: format → lint → unit tests → E2E tests. Use before deployment or in CI.
 
 ## 🎨 Component Library
 

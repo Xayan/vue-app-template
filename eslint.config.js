@@ -1,10 +1,10 @@
 import js from '@eslint/js'
-import pluginVue from 'eslint-plugin-vue'
 import pluginTypeScript from '@typescript-eslint/eslint-plugin'
 import parserTypeScript from '@typescript-eslint/parser'
-import parserVue from 'vue-eslint-parser'
-import pluginPrettier from 'eslint-plugin-prettier'
 import configPrettier from 'eslint-config-prettier'
+import pluginPrettier from 'eslint-plugin-prettier'
+import pluginVue from 'eslint-plugin-vue'
+import parserVue from 'vue-eslint-parser'
 
 export default [
   {
@@ -52,6 +52,14 @@ export default [
       ...configPrettier.rules,
       'prettier/prettier': 'warn',
       'vue/multi-word-component-names': 'warn',
+    },
+  },
+  {
+    files: ['playwright.config.ts', 'vitest.config.ts'],
+    languageOptions: {
+      globals: {
+        process: 'readonly',
+      },
     },
   },
 ]

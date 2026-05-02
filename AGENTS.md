@@ -10,21 +10,29 @@
 **Critical: Execution order matters.** All workflows enforce this sequence:
 
 ```
-npm run build  →  format → lint (with type-check) → vue-tsc -b → vite build
-npm run test   →  format → lint → vitest
+npm run build        →  format → lint (with type-check) → vue-tsc -b → vite build
+npm run test         →  format → lint → vitest --run (once)
+npm run test:watch   →  format → lint → vitest (watch mode)
+npm run test:all     →  format → lint → vitest --run → playwright (unit + E2E tests)
+npm run test:e2e     →  playwright tests (after dev server starts)
 ```
 
 Do not run `vitest`, `vite build`, or `vue-tsc` directly. Always use the npm scripts.
 
+**Pre-commit workflow:** Git commits trigger Husky hooks that run `lint-staged`, which automatically fixes formatting and linting issues on staged files before the commit is created.
+
 ## Scripts
 
-| Command                 | Effect                                              | Use when                       |
-| ----------------------- | --------------------------------------------------- | ------------------------------ |
-| `npm run dev`           | Start Vite dev server (port 5173 or next available) | Local development              |
-| `npm run build`         | Full production build with quality gates            | Deploying or verifying release |
-| `npm run test -- --run` | Run tests once with quality checks                  | CI or one-off verification     |
-| `npm run test`          | Tests in watch mode with quality checks             | Active development             |
-| `npm run check`         | Format + lint only, no tests                        | Quick validation               |
+| Command              | Effect                                                  | Use when                       |
+| -------------------- | ------------------------------------------------------- | ------------------------------ |
+| `npm run dev`        | Start Vite dev server (port 5173 or next available)     | Local development              |
+| `npm run build`      | Full production build with quality gates                | Deploying or verifying release |
+| `npm run test`       | Run unit tests once with quality checks                 | CI or verification             |
+| `npm run test:watch` | Unit tests in watch mode with quality checks            | Active development             |
+| `npm run test:ui`    | Interactive unit test dashboard                         | Debugging tests locally        |
+| `npm run test:e2e`   | Run E2E tests across browsers (Chromium/Firefox/WebKit) | Integration testing            |
+| `npm run test:all`   | Full test suite: unit + E2E with quality checks         | Pre-deployment or CI           |
+| `npm run check`      | Format + lint only, no tests                            | Quick validation               |
 
 ## Format & Lint Behavior
 
@@ -79,12 +87,35 @@ Project uses **Lucide Icons** (Vue components).
 
 ## Testing
 
+### Unit Tests
+
 - Test files: `src/**/__tests__/*.spec.ts`
 - Environment: jsdom (DOM available)
 - Globals: `describe`, `it`, `expect` (no import needed)
 - Path alias `@` resolves to `src/`
 - Tests automatically run quality checks (`npm run check`) first; if they fail, tests do not run
-- **Always run `npm test -- --run` after each batch of changes** to ensure everything still works before proceeding
+- **Always run `npm run test:all` after each batch of changes** to ensure everything still works before proceeding
+
+### E2E Tests
+
+- Test files: `e2e/**/*.spec.ts`
+- Framework: Playwright with multi-browser support (Chromium, Firefox, WebKit)
+- Base URL configured in `playwright.config.ts` (defaults to `http://localhost:5173`)
+- Dev server automatically starts when running E2E tests locally
+- Tests run in CI via GitHub Actions pipeline
+- For local testing: `npm run test:e2e` (requires `npx playwright install` first)
+
+### Full Test Suite
+
+- Run all tests with: `npm run test:all` (unit + E2E with quality checks)
+- Test results are stored in `test-results/` directory (gitignored)
+- Results include error contexts and screenshots from failed tests
+
+### Pre-commit Quality Checks
+
+- **Husky** hooks run on every git commit in `.husky/pre-commit`
+- **lint-staged** automatically fixes formatting and linting issues on staged files
+- Prevents code quality violations from entering the repository
 
 ## TailwindCSS v4
 

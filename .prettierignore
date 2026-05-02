@@ -18,6 +18,10 @@ package-lock.json
 pnpm-lock.yaml
 yarn.lock
 
+# Test results
+test-results/
+playwright-report/
+
 # Configuration files (YAML, shell scripts, etc.)
 docker-compose.yml
 Dockerfile*

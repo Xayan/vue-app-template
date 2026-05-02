@@ -11,8 +11,22 @@
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "check": "npm run format && npm run lint",
-    "test": "npm run check && vitest",
-    "test:ui": "npm run check && vitest --ui"
+    "clean": "rm -rf dist test-results playwright-report node_modules/.tmp node_modules/.cache",
+    "test": "npm run check && vitest --run",
+    "test:e2e": "npx playwright test",
+    "test:all": "npm run test && npm run test:e2e",
+    "test:watch": "npm run check && vitest",
+    "test:ui": "npm run check && vitest --ui",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{js,ts,vue}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,css,md}": [
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "@tanstack/vue-query": "^5.100.7",
@@ -27,6 +41,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.59.1",
     "@tailwindcss/postcss": "^4.2.4",
     "@types/node": "^24.12.2",
     "@typescript-eslint/eslint-plugin": "^8.59.1",
@@ -39,13 +54,18 @@
     "eslint": "^10.2.1",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.5",
+    "eslint-plugin-unused-imports": "^4.4.1",
     "eslint-plugin-vue": "^10.9.0",
+    "husky": "^9.1.7",
     "jsdom": "^29.1.1",
+    "lint-staged": "^16.4.0",
     "postcss": "^8.5.12",
     "prettier": "^3.8.3",
+    "rollup-plugin-visualizer": "^7.0.1",
     "tailwindcss": "^4.2.4",
     "typescript": "~6.0.2",
     "vite": "^8.0.10",
+    "vite-plugin-checker": "^0.13.0",
     "vitest": "^4.1.5",
     "vue-eslint-parser": "^10.4.0",
     "vue-tsc": "^3.2.7"
