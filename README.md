@@ -15,8 +15,11 @@ A modern, production-ready Vue 3 project template with TypeScript, Vite, Tailwin
 ### Styling & UI
 
 - **TailwindCSS v4** - Utility-first CSS framework with `@tailwindcss/postcss` plugin
+- **Shadcn Vue** - High-quality, unstyled, and composable Vue components based on Radix UI
 - **PostCSS** - CSS transformations with Autoprefixer
 - **Lucide Icons** - Beautiful, minimal SVG icons with Vue 3 components
+- **CVA (Class Variance Authority)** - Type-safe component style variants
+- **clsx & tailwind-merge** - Intelligent class name utilities for conditional and conflicting classes
 
 ### Routing
 
@@ -71,7 +74,8 @@ npm run test:ui      # Interactive test UI dashboard
 - ✅ **TypeScript Support** - Full type safety across the entire project
 - ✅ **Vite HMR** - Instant Hot Module Replacement during development
 - ✅ **TailwindCSS v4** - Modern utility-first styling with semantic typography classes
-- ✅ **Component Library** - Reusable `BaseButton`, `BaseLink`, and `SvgIcon` components
+- ✅ **Shadcn Vue Components** - Professional, composable UI components ready to copy into your project
+- ✅ **Component Library** - Professional UI components powered by Shadcn Vue
 - ✅ **Routing** - Vue Router with lazy-loaded components
 - ✅ **Testing** - Vitest with component testing utilities
 - ✅ **Code Quality** - ESLint, Prettier, and TypeScript type checking
@@ -130,34 +134,52 @@ npm run test:ui
 
 ## 🎨 Component Library
 
-### BaseButton
+### Shadcn Vue Components (Recommended)
 
-Flexible button component with multiple variants and sizes:
+This project prioritizes the use of **Shadcn Vue** components. They are professional, fully accessible, and highly customizable.
 
-```html
-<BaseButton variant="primary" size="lg" @click="handleClick"> Click me </BaseButton>
-```
+#### ShadButton
 
-**Props:** `variant` (primary/secondary/danger/ghost), `size` (sm/md/lg), `disabled`, `type`
-
-### BaseLink
-
-Semantic link component with optional button styling:
+Professional button component with multiple variants and sizes:
 
 ```html
-<BaseLink href="/docs" button variant="secondary"> Documentation </BaseLink>
+<ShadButton variant="default" size="default" @click="handleClick"> Click me </ShadButton>
 ```
 
-**Props:** `href`, `target`, `rel`, `button` (enable button styling), `variant`, `size`
+**Props:** `variant` (default/destructive/outline/secondary/ghost/link), `size` (default/sm/lg/icon/icon-sm/icon-lg)
+
+---
+
+### Custom Components
+
+Legacy custom components are being phased out in favor of Shadcn Vue. Use standard HTML elements or Shadcn components for new features.
+
+## 📦 Adding More Shadcn Vue Components
+
+Shadcn Vue components are copied into your project (not installed as npm packages). To add more components:
+
+```bash
+npx shadcn-vue@latest add button      # Already included
+npx shadcn-vue@latest add dialog
+npx shadcn-vue@latest add dropdown-menu
+npx shadcn-vue@latest add card
+# ... etc
+```
+
+New components will be created in `src/components/ui/[component-name]/`.
+
+**Note:** Each component is a source file that you own and can customize. You're not locked into the original implementation.
 
 ## 🔧 Config Files
 
-- `vite.config.ts` - Vite configuration
+- `vite.config.ts` - Vite configuration with `@/` path alias
 - `vitest.config.ts` - Vitest configuration
-- `tsconfig.json` - TypeScript configuration
+- `tsconfig.json` - Root TypeScript configuration (references app and node configs)
+- `tsconfig.app.json` - Vue app TypeScript configuration with path aliases
 - `tailwind.config.js` - TailwindCSS configuration
 - `postcss.config.js` - PostCSS configuration
 - `eslint.config.js` - ESLint configuration
+- `components.json` - Shadcn Vue configuration for component installation
 - `.prettierrc`, `.prettierignore` - Prettier configuration
 
 ---
@@ -177,6 +199,7 @@ Semantic link component with optional button styling:
 - [Vue Router Guide](https://router.vuejs.org/)
 - [Vite Documentation](https://vitejs.dev/)
 - [TailwindCSS v4 Documentation](https://tailwindcss.com/)
+- [Shadcn Vue Components](https://ui.shadcn-vue.com/)
 - [Lucide Icons](https://lucide.dev/)
 - [Vitest Documentation](https://vitest.dev/)
 

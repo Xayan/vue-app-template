@@ -1,5 +1,10 @@
 # AGENTS.md
 
+## Core Principles for Agents
+
+- **Utilize modern tooling and standards** - Leverage current best practices, frameworks, and tools. Prefer established, well-maintained solutions over legacy approaches.
+- **Push back on bad ideas** - Provide constructive feedback when requests conflict with code quality, performance, maintainability, or established project standards. Prioritize long-term health over short-term expediency.
+
 ## Build & Test Pipeline
 
 **Critical: Execution order matters.** All workflows enforce this sequence:
@@ -31,16 +36,24 @@ Do not run `vitest`, `vite build`, or `vue-tsc` directly. Always use the npm scr
 
 ## Components & Styling
 
+### Shadcn Vue Components (Primary)
+
+- **Prioritize Shadcn Vue** for all UI elements.
+- Components are **copied into your project** (not npm packages)
+- Stored in `src/components/ui/[component-name]/`
+- Each component is editable and customizable
+- Install new components with: `npx shadcn-vue@latest add [component-name]`
+- Configuration: `components.json` defines where components are installed and styled
+
 ### Reusable Components
 
-- **BaseButton.vue** - Flexible button with variants (primary/secondary/danger/ghost) and sizes (sm/md/lg)
-- **BaseLink.vue** - Semantic `<a>` tag with optional button styling via `button` prop
+- **ShadButton.vue** - Professional Shadcn Vue button with variants (default/destructive/outline/secondary/ghost/link) and sizes (default/sm/lg/icon/icon-sm/icon-lg)
 
-### Button Styles
+### Utilities
 
-- Button styling logic extracted to `src/utils/buttonStyles.ts`
-- Exports `ButtonVariant`, `ButtonSize` types and `getButtonClasses(variant, size)` function
-- Used by both `BaseButton` and `BaseLink` for consistent styling
+- **Utilities in `src/lib/utils.ts`:**
+  - `cn()` function combines `clsx` + `tailwind-merge` for smart class merging
+  - Handles conditional classes and resolves Tailwind conflicts
 
 ### Typography CSS
 
@@ -61,6 +74,8 @@ Project uses **Lucide Icons** (Vue components).
 
 - Vue Router imports must use `type` for types: `import type { RouteRecordRaw } from 'vue-router'`
 - `vue-tsc -b` enforces `verbatimModuleSyntax` in tsconfig; respect type-only imports
+- Path aliases: `@/*` resolves to `src/` (configured in `vite.config.ts`, `tsconfig.json`, and `tsconfig.app.json`)
+- **Important:** Both `tsconfig.json` and `tsconfig.app.json` must have the same path aliases for proper TypeScript resolution
 
 ## Testing
 
@@ -140,3 +155,5 @@ This project can also use the **Context7 MCP server** for accessing external lib
 
 - Vite will re-optimize dependencies if `package-lock.json` changes
 - Component tests in `__tests__/` must find their parent component via relative paths (e.g., `../HelloWorld.vue`, not `../components/HelloWorld.vue`)
+- When installing Shadcn Vue components, ensure `components.json` exists and is properly configured before running `npx shadcn-vue@latest add [component-name]`
+- Shadcn Vue components downloaded with the CLI may include Reka UI imports by default; remove these and use the built-in Vue features instead
