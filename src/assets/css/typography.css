@@ -1,43 +1,41 @@
-/** Fonts and typography styles */
+#app {
+  .text-body-primary {
+    @apply text-lg text-slate-400;
+  }
 
-:root {
-  body {
-    .text-body-primary {
-      @apply text-lg text-slate-400;
-    }
+  .text-emphasis-pink {
+    @apply text-lg italic text-pink-500;
+  }
 
-    .text-emphasis-pink {
-      @apply text-lg italic text-pink-500;
-    }
+  .heading-page {
+    @apply text-5xl font-thin text-slate-100;
+  }
 
-    .heading-page {
-      @apply text-5xl font-bold text-slate-100;
-    }
+  .heading-section {
+    @apply text-2xl font-thin text-slate-100;
+  }
 
-    .heading-section {
-      @apply text-2xl font-bold text-slate-100;
-    }
+  .subheading-descriptive {
+    @apply text-slate-400;
+  }
 
-    .subheading-descriptive {
-      @apply text-slate-400;
-    }
+  code {
+    @apply bg-slate-800;
+    @apply px-2 py-1 rounded;
+    @apply text-sm;
+  }
 
-    code {
-      @apply bg-slate-800;
-      @apply px-2 py-1 rounded;
-      @apply text-sm;
-    }
+  #docs {
+    .link {
+      @apply inline-flex items-center justify-start gap-2;
+      @apply w-full px-4 py-2;
+      @apply border rounded-lg border-slate-700;
+      @apply bg-slate-800 hover:bg-slate-700;
+      @apply font-semibold text-sm text-slate-100;
+      @apply transition-colors duration-200;
 
-    #docs {
-      .link {
-        @apply w-full inline-flex items-center justify-center gap-2;
-        @apply bg-slate-800 text-slate-100 hover:bg-slate-700;
-        @apply px-6 py-3 rounded-lg border border-slate-700;
-        @apply text-base font-semibold;
-
-        img {
-          @apply w-5 h-5;
-        }
+      img {
+        @apply w-5 h-5;
       }
     }
   }
