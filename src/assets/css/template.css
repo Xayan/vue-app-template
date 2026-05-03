@@ -1,12 +1,18 @@
 body {
-  @apply min-h-screen flex flex-col bg-slate-950 text-slate-50;
+  @apply min-h-screen flex flex-col;
+  @apply bg-slate-950 text-slate-50;
 
   #app {
-    @apply flex flex-col flex-1 min-h-screen bg-linear-to-br from-slate-800 to-slate-950;
+    @apply flex flex-col flex-1 min-h-screen;
+    @apply bg-linear-to-br from-slate-800 to-slate-950;
 
     nav {
       @apply w-full sticky top-0 z-50;
       @apply bg-slate-900 border-b border-violet-200/20;
+
+      #home-link {
+        @apply inline-flex items-center gap-2;
+      }
     }
 
     main {
@@ -24,8 +30,8 @@ body {
         }
 
         &#docs {
-          @apply bg-linear-to-br from-pink-200/10 to-green-200/10;
-          @apply border border-slate-800;
+          /* @apply bg-linear-to-br from-pink-200/10 to-green-200/10;
+          @apply border border-slate-800; */
           @apply mx-2 mb-4 mt-12;
           @apply px-2 py-4 rounded-2xl;
         }

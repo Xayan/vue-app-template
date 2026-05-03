@@ -1,38 +1,46 @@
 #app {
   .text-body-primary {
-    @apply text-lg text-slate-400;
+    @apply text-slate-400 text-lg;
   }
 
   .text-emphasis-pink {
-    @apply text-lg italic text-pink-500;
+    @apply text-pink-500;
   }
 
   .heading-page {
-    @apply text-5xl font-thin text-slate-100;
+    @apply text-slate-100 text-4xl font-thin;
   }
 
   .heading-section {
-    @apply text-2xl font-thin text-slate-100;
+    @apply text-slate-100 text-2xl font-thin;
   }
 
   .subheading-descriptive {
     @apply text-slate-400;
   }
 
+  a {
+    @apply hover:text-blue-400 transition-colors;
+  }
+
   code {
-    @apply bg-slate-800;
+    @apply bg-pink-800/25;
     @apply px-2 py-1 rounded;
     @apply text-sm;
   }
 
+  main {
+    @apply text-center;
+  }
+
   #docs {
     .link {
+      @apply w-full px-4 py-2 rounded-lg;
       @apply inline-flex items-center justify-start gap-2;
-      @apply w-full px-4 py-2;
-      @apply border rounded-lg border-slate-700;
-      @apply bg-slate-800 hover:bg-slate-700;
-      @apply font-semibold text-sm text-slate-100;
-      @apply transition-colors duration-200;
+      @apply bg-slate-200/10 hover:bg-pink-400/20;
+      @apply text-slate-100 hover:text-blue-300;
+      @apply font-semibold text-sm text-left;
+      @apply transition-colors duration-500;
 
       img {
         @apply w-5 h-5;

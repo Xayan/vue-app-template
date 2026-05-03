@@ -4,6 +4,6 @@
   "tabWidth": 2,
   "trailingComma": "es5",
   "arrowParens": "avoid",
-  "printWidth": 100,
-  "vueIndentScriptAndStyle": false
+  "printWidth": 120,
+  "vueIndentScriptAndStyle": true
 }
