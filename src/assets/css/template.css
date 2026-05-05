@@ -30,8 +30,6 @@ body {
         }
 
         &#docs {
-          /* @apply bg-linear-to-br from-pink-200/10 to-green-200/10;
-          @apply border border-slate-800; */
           @apply mx-2 mb-4 mt-12;
           @apply px-2 py-4 rounded-2xl;
         }

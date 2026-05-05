@@ -45,4 +45,4 @@ A Vue 3 template project for building modern single-page applications with TypeS
 - **Type-only imports**: Vue Router types must use `import type` syntax (enforced by `verbatimModuleSyntax`)
 - **Vue components**: Must have multi-word names (e.g., `HelloWorld.vue`, not `Hello.vue`)
 - **Component tests**: Must reference parent components via relative paths
-- **Lucide Icons**: Use `SvgIcon` wrapper component with kebab-case names
+- **Lucide Icons**: Import components directly from `lucide-vue-next`

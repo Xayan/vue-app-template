@@ -55,4 +55,4 @@ This runs: format → lint (with type-check) → vue-tsc -b → vite build
 
 - **Vite re-optimizes**: If `package-lock.json` changes, Vite re-optimizes dependencies
 - **Component test paths**: Use relative paths, not path aliases (e.g., `../HelloWorld.vue`)
-- **Lucide icons**: Use `SvgIcon` wrapper; kebab-case names auto-convert to PascalCase
+- **Lucide icons**: Import directly from `lucide-vue-next` as PascalCase components

@@ -88,7 +88,7 @@ npm run test:all     # Run all tests: unit (once) + E2E (quality checks enforced
 - ✅ **Routing** - Vue Router with lazy-loaded components
 - ✅ **Testing** - Vitest with component testing utilities
 - ✅ **Code Quality** - ESLint, Prettier, and TypeScript type checking
-- ✅ **Icons** - Lucide Icons integration via `SvgIcon` component wrapper
+- ✅ **Icons** - Lucide Icons integration via `lucide-vue-next` Vue components
 - ✅ **Semantic Typography** - CSS classes with `@apply` for consistent text styling
 - ✅ **Dark Theme** - Production-ready dark mode by default
 - ✅ **Pre-commit Quality** - Format and lint run automatically before builds and tests

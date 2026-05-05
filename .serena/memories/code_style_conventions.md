@@ -13,7 +13,7 @@
 - **Naming**: Multi-word names required (e.g., `HelloWorld.vue`, not `Hello.vue`)
 - **Template**: Use kebab-case for component and HTML attributes
 - **Script**: Use `<script setup lang="ts">` for composition API
-- **Icons**: Import `SvgIcon` and use kebab-case names (auto-converts to PascalCase)
+- **Icons**: Import from `lucide-vue-next` as Vue components (PascalCase)
 
 ## Styling
 

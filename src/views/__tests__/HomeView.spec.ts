@@ -1,7 +1,7 @@
+import HomeView from '@/views/HomeView.vue'
 import { mount } from '@vue/test-utils'
 import { createPinia } from 'pinia'
 import { describe, expect, it } from 'vitest'
-import HomeView from '../HomeView.vue'
 
 describe('HomeView.vue', () => {
   it('renders and contains counter button', () => {

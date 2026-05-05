@@ -1,7 +1,7 @@
 <script setup lang="ts">
+  import ShadButton from '@/components/ui/button/ShadButton.vue'
+  import { useCounterStore } from '@/stores/counter'
   import { BookOpenText, Zap } from 'lucide-vue-next'
-  import ShadButton from '../components/ui/button/ShadButton.vue'
-  import { useCounterStore } from '../stores/counter'
 
   const counter = useCounterStore()
 
@@ -16,17 +16,38 @@
   }
 
   const links: Link[] = [
-    { name: 'TypeScript', url: 'https://www.typescriptlang.org/', logo: getLogoUrl('typescript') },
-    { name: 'Tailwind CSS', url: 'https://tailwindcss.com/', logo: getLogoUrl('tailwind') },
+    {
+      name: 'TypeScript',
+      url: 'https://www.typescriptlang.org/',
+      logo: getLogoUrl('typescript'),
+    },
+    {
+      name: 'Tailwind CSS',
+      url: 'https://tailwindcss.com/',
+      logo: getLogoUrl('tailwind'),
+    },
     { name: 'Vue 3', url: 'https://vuejs.org/', logo: getLogoUrl('vue') },
-    { name: 'Shadcn Vue', url: 'https://www.shadcn-vue.com/', logo: getLogoUrl('shadcn') },
-    { name: 'Pinia', url: 'https://pinia.vuejs.org/', logo: getLogoUrl('pinia') },
+    {
+      name: 'Shadcn Vue',
+      url: 'https://www.shadcn-vue.com/',
+      logo: getLogoUrl('shadcn'),
+    },
+
+    {
+      name: 'Pinia',
+      url: 'https://pinia.vuejs.org/',
+      logo: getLogoUrl('pinia'),
+    },
     {
       name: 'TanStack Query',
       url: 'https://tanstack.com/query/',
       logo: getLogoUrl('tanstack-query'),
     },
-    { name: 'Lucide Icons', url: 'https://lucide.dev/', logo: getLogoUrl('lucide') },
+    {
+      name: 'Lucide Icons',
+      url: 'https://lucide.dev/',
+      logo: getLogoUrl('lucide'),
+    },
     { name: 'Vite', url: 'https://vite.dev/', logo: getLogoUrl('vite') },
   ]
 </script>
@@ -60,7 +81,7 @@
 
     <ul class="grid grid-cols-2 gap-3 w-full max-w-md">
       <li v-for="link in links" :key="link.url">
-        <a :href="link.url" class="link" target="_blank">
+        <a :href="link.url" class="link" target="_blank" rel="noopener noreferrer">
           <img :src="link.logo" :alt="`${link.name} logo`" />
           <span>{{ link.name }}</span>
         </a>

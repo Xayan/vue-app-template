@@ -181,10 +181,3 @@ This project can also use the **Context7 MCP server** for accessing external lib
 1. Call `context7_resolve-library-id` with library name and query to get the library ID
 2. Call `context7_query-docs` with the library ID and specific question
 3. Use results to inform implementation decisions or reference best practices
-
-## Known Quirks
-
-- Vite will re-optimize dependencies if `package-lock.json` changes
-- Component tests in `__tests__/` must find their parent component via relative paths (e.g., `../HelloWorld.vue`, not `../components/HelloWorld.vue`)
-- When installing Shadcn Vue components, ensure `components.json` exists and is properly configured before running `npx shadcn-vue@latest add [component-name]`
-- Shadcn Vue components downloaded with the CLI may include Reka UI imports by default; remove these and use the built-in Vue features instead
