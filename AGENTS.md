@@ -165,7 +165,6 @@ This project is configured to work with the **Serena MCP server**, a powerful sy
 - Use `find_symbol`, `get_symbols_overview`, and `search_for_pattern` for exploration
 - Use `replace_symbol_body` for complete symbol replacements
 - Use `replace_content` for targeted line-based edits
-- Project name in Serena: `test`
 
 ## Context7 MCP Server
 

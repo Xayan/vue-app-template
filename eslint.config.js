@@ -17,7 +17,9 @@ export default [
       sourceType: 'module',
       parser: parserTypeScript,
       globals: {
+        document: 'readonly',
         fetch: 'readonly',
+        window: 'readonly',
       },
     },
     plugins: {
