@@ -8,7 +8,7 @@ export default defineConfig(({ mode: _mode }) => ({
     port: 5173,
     allowedHosts: true,
   },
-  plugins: [vue()].filter(Boolean),
+  plugins: [vue()],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),

@@ -24,10 +24,8 @@ describe('HomeView.vue', () => {
     const button = wrapper.findAll('button').find(btn => btn.text().includes('Count is'))
     expect(button).toBeDefined()
 
-    if (button) {
-      await button.trigger('click')
-      expect(wrapper.text()).toContain('Count is 1')
-    }
+    await button!.trigger('click')
+    expect(wrapper.text()).toContain('Count is 1')
   })
 
   it('renders documentation links', () => {
