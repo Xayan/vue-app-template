@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import ShadButton from '@/components/ui/button/ShadButton.vue'
+  import { ShadButton } from '@/components/ui/button'
   import { useCounterStore } from '@/stores/counter'
   import { BookOpenText, Zap } from 'lucide-vue-next'
 

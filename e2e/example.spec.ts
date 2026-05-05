@@ -3,9 +3,18 @@ import { test, expect } from '@playwright/test'
 test('homepage has title and basic navigation', async ({ page }) => {
   await page.goto('/')
 
-  // Expect a title "to contain" a substring.
   await expect(page).toHaveTitle(/Vue Template/)
-
-  // Check if the logo/brand name is visible
   await expect(page.getByText('Vue Template')).toBeVisible()
+  await expect(page.getByText('Documentation')).toBeVisible()
+})
+
+test('shows 404 page for unknown routes', async ({ page }) => {
+  await page.goto('/this-page-does-not-exist')
+
+  await expect(page.getByText('404')).toBeVisible()
+  await expect(page.getByText('Page not found')).toBeVisible()
+  await expect(page.getByRole('link', { name: 'Go Home' })).toBeVisible()
+
+  await page.getByRole('link', { name: 'Go Home' }).click()
+  await expect(page).toHaveURL('/')
 })
